@@ -98,6 +98,16 @@ function Navbar({ page, setPage, cartCount }) {
 
       {/* Mobile Menu Dropdown */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-header">
+          <button 
+            className="close-btn"
+            onClick={() => setMenuOpen(false)}
+            title="Close Menu"
+            aria-label="Close navigation menu"
+          >
+            ✕
+          </button>
+        </div>
         <div className="mobile-menu-content">
           {NAV_PAGES.map((pageItem) => (
             <button
