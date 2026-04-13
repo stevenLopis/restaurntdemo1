@@ -206,7 +206,7 @@
   height: 100vh;
   background: #020408;
   border-left: 2px solid rgba(0, 245, 255, 0.3);
-  transform: translateX(100%);
+  transform: translateX(0); /* Temporarily set to 0 for debugging */
   transition: transform 0.3s ease-out;
   overflow-y: auto;
   overflow-x: hidden;
