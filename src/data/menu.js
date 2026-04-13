@@ -29,4 +29,4 @@ export const CATS = ["All", "Street Food", "Cyber Meals", "Drinks", "Desserts"];
 
 export const FEATURED = MENU_ITEMS.filter(i => [1,5,9,13].includes(i.id));
 
-export const NAV_PAGES = ["Home","Menu","Help","Contact"];
+export const NAV_PAGES = ["Home","Menu","About","Help","Contact"];

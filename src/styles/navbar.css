@@ -177,7 +177,7 @@
   background-color: #000000;
   background: #020408;
   border-bottom: 2px solid rgba(0, 245, 255, 0.3);
-  z-index: 9999;
+  z-index: 999;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;

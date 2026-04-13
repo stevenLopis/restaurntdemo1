@@ -372,20 +372,6 @@ img {
   }
 
   /* CRITICAL: Ensure mobile menu is fully visible */
-  .mobile-menu {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: #020408;
-    z-index: 9999;
-  }
-
-  .mobile-menu.open {
-    max-height: 100vh;
-    overflow-y: auto;
-  }
-
   .mobile-menu-content {
     width: 100%;
     box-sizing: border-box;
