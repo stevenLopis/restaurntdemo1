@@ -34,8 +34,8 @@ function Navbar({ page, setPage, cartCount }) {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        
-        {/* Logo */}
+
+        {/* ── Logo (left, flex-shrink: 0) ── */}
         <button className="logo-btn" onClick={() => handleNavClick('Home')}>
           <div className="logo-box">
             <span className="logo-text">NB</span>
@@ -49,7 +49,7 @@ function Navbar({ page, setPage, cartCount }) {
           </div>
         </button>
 
-        {/* Desktop Navigation Menu */}
+        {/* ── Desktop Nav Menu (center, flex: 1, justify-content: center) ── */}
         <div className="nav-menu-desktop">
           {NAV_PAGES.map((pageItem) => (
             <button
@@ -62,10 +62,10 @@ function Navbar({ page, setPage, cartCount }) {
           ))}
         </div>
 
-        {/* Desktop Cart & Order Button */}
+        {/* ── Desktop Actions (right, flex-shrink: 0) ── */}
         <div className="nav-actions-desktop">
           <button className="cart-btn" onClick={() => handleNavClick('Cart')} title="Shopping Cart">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="9" cy="21" r="1" />
               <circle cx="20" cy="21" r="1" />
               <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
@@ -80,9 +80,9 @@ function Navbar({ page, setPage, cartCount }) {
           </button>
         </div>
 
-        {/* Mobile Hamburger Menu */}
+        {/* ── Mobile Hamburger ── */}
         <div className="hamburger-wrapper">
-          <button 
+          <button
             className={`hamburger ${menuOpen ? 'open' : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
             title="Toggle Menu"
@@ -96,9 +96,9 @@ function Navbar({ page, setPage, cartCount }) {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* ── Mobile Menu Dropdown ── */}
       <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
-        <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(false)}></div>
+        <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(false)} />
         <div className="mobile-menu-content">
           <button className="close-btn" onClick={() => setMenuOpen(false)}>×</button>
           <div className="nav-links">

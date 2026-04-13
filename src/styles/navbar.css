@@ -16,6 +16,7 @@
   backdrop-filter: blur(16px);
   transition: all 0.4s ease;
   box-shadow: none;
+  overflow: hidden; /* ✅ prevent any child from overflowing */
 }
 
 .navbar.scrolled {
@@ -27,13 +28,15 @@
 .navbar-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(12px, 4vw, 60px);
+  padding: 0 clamp(8px, 3vw, 40px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* logo left | nav center | actions right */
   height: 60px;
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden; /* ✅ no horizontal bleed */
+  gap: 8px;
 }
 
 /* ─── LOGO BUTTON (Mobile-Optimized) ─── */
@@ -47,7 +50,7 @@
   padding: 0;
   min-height: 48px;
   min-width: 48px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* ✅ logo never shrinks */
   transition: opacity 0.3s ease;
 }
 
@@ -101,6 +104,7 @@
   color: #00f5ff;
   letter-spacing: 0.12em;
   text-shadow: 0 0 16px rgba(0, 245, 255, 0.7);
+  white-space: nowrap;
 }
 
 .logo-tagline {
@@ -109,6 +113,7 @@
   color: rgba(0, 245, 255, 0.5);
   letter-spacing: 0.25em;
   margin-top: 1px;
+  white-space: nowrap;
 }
 
 /* ─── DESKTOP NAVIGATION (Hidden on Mobile) ─── */
@@ -223,7 +228,7 @@
 .nav-links {
   display: none;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
   align-items: center;
 }
 
@@ -235,7 +240,7 @@
   background: none;
   border: 1px solid rgba(0, 245, 255, 0.3);
   color: #00f5ff;
-  padding: 12px 24px;
+  padding: 5px 8px;
   font-family: 'Orbitron', monospace;
   font-size: 0.9rem;
   font-weight: 600;
@@ -302,55 +307,63 @@
    ╚═══════════════════════════════════════════════════════════════╝ */
 @media (min-width: 768px) {
   .navbar-container {
-    padding: 0 clamp(24px, 5vw, 80px);
-    height: 68px;
-  }
-
-  .logo-btn {
+    padding: 0 clamp(16px, 3vw, 48px);
+    height: 64px;
     gap: 12px;
   }
 
+  .logo-btn {
+    gap: 10px;
+  }
+
   .logo-text-group .glitch-wrap {
-    font-size: 1rem;
-    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
   }
 
   .logo-tagline {
-    font-size: 0.52rem;
+    font-size: 0.48rem;
   }
 
-  /* Show Desktop Navigation */
+  /* ✅ Center nav: takes remaining space, centers content, never overflows */
   .nav-menu-desktop {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-grow: 1;
-    justify-content: center;
-    margin: 0 24px;
+    justify-content: center;  /* ✅ centered — NOT space-between */
+    gap: 2px;                 /* ✅ tight gap between items */
+    flex: 1 1 0;              /* ✅ grow/shrink freely */
+    min-width: 0;             /* ✅ prevent overflow blowout */
+    overflow: hidden;         /* ✅ clip if truly no space */
+    margin: 0;
   }
 
+  /* ✅ Desktop nav link — compact, no-wrap */
   .nav-link {
     font-family: 'Orbitron', monospace;
-    font-size: 0.58rem;
+    font-size: 0.56rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(224, 244, 255, 0.5);
-    padding: 8px 14px;
+    padding: 6px 8px;         /* ✅ reduced padding */
+    white-space: nowrap;      /* ✅ never break text */
     background: transparent;
     border: 1px solid transparent;
     transition: all 0.25s ease;
     cursor: pointer;
     text-shadow: none;
-    min-height: 44px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     border-radius: 0;
+    min-width: 0;
   }
 
   .nav-link:hover {
     color: #00f5ff;
     border-color: rgba(0, 245, 255, 0.2);
+    background: none;
+    transform: none;
   }
 
   .nav-link.active {
@@ -360,18 +373,20 @@
     text-shadow: 0 0 12px rgba(0, 245, 255, 0.8);
   }
 
-  /* Show Desktop Actions */
+  /* ✅ Right section — fixed width, never grows, never overflows */
   .nav-actions-desktop {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
+    gap: 6px;
+    flex-shrink: 0;           /* ✅ never shrinks below content */
+    flex-grow: 0;             /* ✅ never steals space from nav */
+    min-width: 0;
   }
 
   .cart-btn {
     position: relative;
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     border: 1px solid rgba(255, 0, 170, 0.3);
     background: rgba(255, 0, 170, 0.06);
     display: flex;
@@ -380,6 +395,7 @@
     transition: all 0.25s ease;
     cursor: pointer;
     color: #ff00aa;
+    flex-shrink: 0;
   }
 
   .cart-btn:hover {
@@ -391,12 +407,12 @@
     position: absolute;
     top: -6px;
     right: -6px;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: #ff00aa;
     border-radius: 50%;
     font-family: 'Orbitron', monospace;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     font-weight: 700;
     color: #020408;
     display: flex;
@@ -405,35 +421,59 @@
     box-shadow: 0 0 12px rgba(255, 0, 170, 0.8);
   }
 
+  /* ✅ ORDER NOW button — compact size */
+  .btn-neon-cyan {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.52rem !important;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 7px 12px !important;
+    white-space: nowrap;
+    background: linear-gradient(45deg, rgba(0, 245, 255, 0.15), rgba(0, 245, 255, 0.05));
+    border: 1px solid rgba(0, 245, 255, 0.5);
+    color: #00f5ff;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .btn-neon-cyan:hover {
+    background: rgba(0, 245, 255, 0.15);
+    border-color: #00f5ff;
+    box-shadow: 0 0 16px rgba(0, 245, 255, 0.3);
+  }
+
   /* Hide Mobile Elements */
   .hamburger-wrapper,
   .mobile-menu {
     display: none !important;
-  }
-
-  /* Desktop Order Button */
-  .btn-neon-cyan {
-    padding: 10px 20px !important;
   }
 }
 
 /* ─── LARGE DESKTOP (1200px+) ─── */
 @media (min-width: 1200px) {
   .navbar-container {
-    padding: 0 60px;
+    padding: 0 clamp(24px, 3vw, 60px);
+    gap: 16px;
   }
 
   .nav-menu-desktop {
-    gap: 12px;
+    gap: 4px; /* slightly more room on large screens */
   }
 
   .nav-link {
-    font-size: 0.62rem;
-    padding: 10px 16px;
+    font-size: 0.60rem;
+    padding: 8px 12px;
   }
 
   .nav-actions-desktop {
-    gap: 12px;
+    gap: 10px;
+  }
+
+  .btn-neon-cyan {
+    font-size: 0.55rem !important;
+    padding: 8px 16px !important;
   }
 }
 
@@ -441,21 +481,30 @@
 @media (min-width: 1600px) {
   .navbar-container {
     height: 72px;
+    gap: 24px;
   }
 
   .logo-text-group .glitch-wrap {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+  }
+
+  .nav-menu-desktop {
+    gap: 6px;
   }
 
   .nav-link {
-    font-size: 0.65rem;
-    padding: 10px 18px;
+    font-size: 0.64rem;
+    padding: 10px 16px;
+  }
+
+  .btn-neon-cyan {
+    font-size: 0.6rem !important;
+    padding: 9px 20px !important;
   }
 }
 
 /* ─── ACCESSIBILITY & TOUCH TARGETS ─── */
 @media (hover: none) and (pointer: coarse) {
-  /* Touch device optimizations */
   .hamburger {
     width: 56px;
     height: 56px;
@@ -547,10 +596,6 @@
   .hamburger-line {
     width: 18px;
     height: 1.5px;
-  }
-
-  .mobile-menu-content-wrapper {
-    top: 56px;
   }
 
   .mobile-menu {
