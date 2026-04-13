@@ -98,7 +98,7 @@ function Navbar({ page, setPage, cartCount }) {
 
       {/* ── Mobile Menu Dropdown ── */}
       <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
-        <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(false)} />
+        <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(true)} />
         <div className="mobile-menu-content">
           <button className="close-btn" onClick={() => setMenuOpen(false)}>×</button>
           <div className="nav-links">
