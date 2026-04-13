@@ -1,0 +1,514 @@
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE NAVBAR - MOBILE-FIRST DESIGN
+   Optimized for screens 320px to 2560px
+   ──────────────────────────────────────────────────────────── */
+
+/* ─── BASE NAVBAR STRUCTURE (Mobile-First) ─── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(2, 4, 8, 0.7);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+  backdrop-filter: blur(16px);
+  transition: all 0.4s ease;
+  box-shadow: none;
+}
+
+.navbar.scrolled {
+  background: rgba(2, 4, 8, 0.95);
+  border-bottom-color: rgba(0, 245, 255, 0.25);
+  box-shadow: 0 4px 40px rgba(0, 245, 255, 0.08);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(12px, 4vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── LOGO BUTTON (Mobile-Optimized) ─── */
+.logo-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  min-height: 48px;
+  min-width: 48px;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-btn:active {
+  opacity: 0.8;
+}
+
+.logo-box {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #00f5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.4), inset 0 0 10px rgba(0, 245, 255, 0.1);
+  animation: pulse-glow 3s infinite;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #00f5ff;
+  letter-spacing: -0.05em;
+}
+
+.logo-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 6px;
+  height: 6px;
+  background: #ff00aa;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff00aa;
+}
+
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.1;
+}
+
+.logo-text-group .glitch-wrap {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #00f5ff;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 16px rgba(0, 245, 255, 0.7);
+}
+
+.logo-tagline {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.4rem;
+  color: rgba(0, 245, 255, 0.5);
+  letter-spacing: 0.25em;
+  margin-top: 1px;
+}
+
+/* ─── DESKTOP NAVIGATION (Hidden on Mobile) ─── */
+.nav-menu-desktop,
+.nav-actions-desktop {
+  display: none;
+}
+
+/* ─── MOBILE HAMBURGER MENU ─── */
+.hamburger-wrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  gap: 5px;
+  background: none;
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.hamburger:active {
+  border-color: rgba(0, 245, 255, 0.7);
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.3);
+}
+
+.hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #00f5ff;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+}
+
+/* Hamburger animation when open */
+.hamburger.open .hamburger-line.line1 {
+  transform: rotate(45deg) translateY(11px);
+}
+
+.hamburger.open .hamburger-line.line2 {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburger.open .hamburger-line.line3 {
+  transform: rotate(-45deg) translateY(-11px);
+}
+
+/* ─── MOBILE MENU DROPDOWN ─── */
+.mobile-menu {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(2, 4, 8, 0.98);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+  backdrop-filter: blur(20px);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+}
+
+.mobile-menu.open {
+  max-height: 100vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 245, 255, 0.1);
+}
+
+.mobile-menu-content {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── MOBILE NAVIGATION LINKS ─── */
+.mobile-nav-link {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+  color: rgba(224, 244, 255, 0.6);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.mobile-nav-link:active {
+  background: rgba(0, 245, 255, 0.08);
+  color: #00f5ff;
+  border-left: 3px solid #00f5ff;
+  padding-left: 17px;
+}
+
+.mobile-nav-link.active {
+  background: rgba(0, 245, 255, 0.12);
+  color: #00f5ff;
+  border-left: 3px solid #00f5ff;
+  padding-left: 17px;
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+}
+
+/* ─── MOBILE ACTIONS (Cart + Order) ─── */
+.mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 12px 0;
+  border-top: 1px solid rgba(0, 245, 255, 0.1);
+  margin-top: 8px;
+}
+
+.mobile-cart-btn,
+.mobile-order-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+  color: rgba(224, 244, 255, 0.6);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+.mobile-cart-btn:active,
+.mobile-order-btn:active {
+  background: rgba(0, 245, 255, 0.08);
+  color: #00f5ff;
+}
+
+.mobile-order-btn {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.15) 0%, rgba(0, 245, 255, 0.05) 100%);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+  color: #00f5ff;
+  font-weight: 700;
+  margin: 8px 12px 0;
+  width: auto;
+  align-self: center;
+  padding: 12px 28px;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
+}
+
+.mobile-order-btn:active {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.25) 0%, rgba(0, 245, 255, 0.12) 100%);
+}
+
+.mobile-cart-btn svg {
+  color: #ff00aa;
+  flex-shrink: 0;
+}
+
+/* ─── PULSE GLOW ANIMATION ─── */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(0, 245, 255, 0.4), inset 0 0 10px rgba(0, 245, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(0, 245, 255, 0.6), inset 0 0 15px rgba(0, 245, 255, 0.2);
+  }
+}
+
+/* ╔═══════════════════════════════════════════════════════════════╗
+   ║             TABLET & DESKTOP BREAKPOINT (768px+)             ║
+   ╚═══════════════════════════════════════════════════════════════╝ */
+@media (min-width: 768px) {
+  .navbar-container {
+    padding: 0 clamp(24px, 5vw, 80px);
+    height: 68px;
+  }
+
+  .logo-btn {
+    gap: 12px;
+  }
+
+  .logo-text-group .glitch-wrap {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+  }
+
+  .logo-tagline {
+    font-size: 0.52rem;
+  }
+
+  /* Show Desktop Navigation */
+  .nav-menu-desktop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 0 24px;
+  }
+
+  .nav-link {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(224, 244, 255, 0.5);
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-shadow: none;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+  }
+
+  .nav-link:hover {
+    color: #00f5ff;
+    border-color: rgba(0, 245, 255, 0.2);
+  }
+
+  .nav-link.active {
+    color: #00f5ff;
+    background: rgba(0, 245, 255, 0.08);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    text-shadow: 0 0 12px rgba(0, 245, 255, 0.8);
+  }
+
+  /* Show Desktop Actions */
+  .nav-actions-desktop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .cart-btn {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 0, 170, 0.3);
+    background: rgba(255, 0, 170, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    color: #ff00aa;
+  }
+
+  .cart-btn:hover {
+    border-color: rgba(255, 0, 170, 0.7);
+    box-shadow: 0 0 20px rgba(255, 0, 170, 0.3);
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    background: #ff00aa;
+    border-radius: 50%;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #020408;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba(255, 0, 170, 0.8);
+  }
+
+  /* Hide Mobile Elements */
+  .hamburger-wrapper,
+  .mobile-menu {
+    display: none !important;
+  }
+
+  /* Desktop Order Button */
+  .btn-neon-cyan {
+    padding: 10px 20px !important;
+  }
+}
+
+/* ─── LARGE DESKTOP (1200px+) ─── */
+@media (min-width: 1200px) {
+  .navbar-container {
+    padding: 0 60px;
+  }
+
+  .nav-menu-desktop {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.62rem;
+    padding: 10px 16px;
+  }
+
+  .nav-actions-desktop {
+    gap: 12px;
+  }
+}
+
+/* ─── XL DESKTOP (1600px+) ─── */
+@media (min-width: 1600px) {
+  .navbar-container {
+    height: 72px;
+  }
+
+  .logo-text-group .glitch-wrap {
+    font-size: 1.1rem;
+  }
+
+  .nav-link {
+    font-size: 0.65rem;
+    padding: 10px 18px;
+  }
+}
+
+/* ─── ACCESSIBILITY & TOUCH TARGETS ─── */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device optimizations */
+  .hamburger {
+    width: 56px;
+    height: 56px;
+  }
+
+  .mobile-nav-link,
+  .mobile-cart-btn,
+  .mobile-order-btn {
+    min-height: 52px;
+    padding: 14px 24px;
+  }
+}
+
+/* ─── REDUCED MOTION (Accessibility) ─── */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .mobile-menu,
+  .hamburger-line,
+  .nav-link,
+  .mobile-nav-link,
+  .logo-box {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ─── HIGH CONTRAST MODE ─── */
+@media (prefers-contrast: more) {
+  .nav-link.active,
+  .mobile-nav-link.active {
+    border: 2px solid #00f5ff;
+  }
+
+  .cart-btn {
+    border-width: 2px;
+  }
+}
+
+/* ─── PRINT STYLES ─── */
+@media print {
+  .navbar,
+  .mobile-menu {
+    display: none !important;
+  }
+}

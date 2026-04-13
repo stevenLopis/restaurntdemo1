@@ -50,7 +50,7 @@ function Help({ setPage }) {
       {/* Hero Banner */}
       <div style={{position:"relative",overflow:"hidden",background:"linear-gradient(135deg,#020408,#050112)",borderBottom:"1px solid rgba(0,245,255,0.1)",padding:"80px clamp(16px,4vw,60px)"}}>
         <div style={{position:"absolute",inset:0,backgroundImage:`linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px)`,backgroundSize:"60px 60px"}}/>
-        <div style={{maxWidth:1400,margin:"0 auto",position:"relative",zIndex:1}}>
+        <div style={{width:"100%",margin:"0 auto",position:"relative",zIndex:1}}>
           <div className="hud-line" style={{marginBottom:16}}>HELP::FAQ_DATABASE</div>
           <h1 style={{fontFamily:"'Orbitron',monospace",fontSize:"clamp(2rem,5vw,4rem)",fontWeight:900,color:"#e0f4ff",marginBottom:20}}>
             FREQUENTLY ASKED <span style={{color:"#00f5ff",textShadow:"0 0 30px rgba(0,245,255,0.8)"}}>QUESTIONS</span>
