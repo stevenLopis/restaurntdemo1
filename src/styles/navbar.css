@@ -504,10 +504,10 @@
   }
 
   /* Hide Mobile Elements */
-  /* .hamburger-wrapper,
+  .hamburger-wrapper,
   .mobile-menu {
     display: none !important;
-  } */
+  }
 
   /* Desktop Order Button */
   .btn-neon-cyan {
@@ -647,16 +647,8 @@
     height: 1.5px;
   }
 
-  .mobile-menu {
-    top: 56px;
-    width: 100%;
-    left: 0;
-    background: #020408;
-    z-index: 9999;
-  }
-
-  .mobile-menu.open {
-    max-height: calc(100vh - 56px);
+  .mobile-menu-content-wrapper {
+    width: 280px;
   }
 
   .mobile-nav-link,
@@ -664,8 +656,7 @@
   .mobile-order-btn {
     font-size: 0.7rem;
     padding: 14px 16px;
-    min-height: 48px;
-    color: #e0f4ff;
+    min-height: 44px;
   }
 
   .mobile-order-btn {
