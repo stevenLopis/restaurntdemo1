@@ -376,24 +376,18 @@ img {
     position: fixed;
     top: 60px;
     left: 0;
-    right: 0;
-    width: 100vw;
-    max-width: 100vw;
-    box-sizing: border-box;
+    width: 100%;
     background: #020408;
-    z-index: 999;
-    overflow-x: hidden;
+    z-index: 9999;
   }
 
   .mobile-menu.open {
-    display: block;
-    max-height: calc(100vh - 60px);
+    max-height: 100vh;
     overflow-y: auto;
   }
 
   .mobile-menu-content {
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
     background: #020408;
     display: flex;
@@ -402,10 +396,11 @@ img {
 
   .mobile-nav-link {
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
     color: #e0f4ff;
     background: transparent;
+    display: block;
+    padding: 16px 20px;
   }
 
   .mobile-nav-link:hover {
@@ -415,7 +410,6 @@ img {
   .mobile-cart-btn,
   .mobile-order-btn {
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
     color: #e0f4ff;
   }
