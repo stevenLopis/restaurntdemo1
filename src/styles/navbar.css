@@ -174,20 +174,24 @@
   top: 60px;
   left: 0;
   right: 0;
-  width: 100%;
-  background: rgba(2, 4, 8, 0.98);
-  border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+  width: 100vw;
+  background: #020408;
+  border-bottom: 2px solid rgba(0, 245, 255, 0.3);
   backdrop-filter: blur(20px);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s ease;
   box-shadow: none;
+  z-index: 999;
+  will-change: max-height;
 }
 
 .mobile-menu.open {
-  max-height: 100vh;
+  max-height: calc(100vh - 60px);
   overflow-y: auto;
-  box-shadow: 0 8px 32px rgba(0, 245, 255, 0.1);
+  box-shadow: 0 8px 40px rgba(0, 245, 255, 0.2), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .mobile-menu-content {
@@ -196,19 +200,22 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
+  background: #020408;
+  min-height: 100%;
 }
 
 /* ─── MOBILE NAVIGATION LINKS ─── */
 .mobile-nav-link {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   padding: 16px 20px;
-  background: none;
+  background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
-  color: rgba(224, 244, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+  color: #e0f4ff;
   font-family: 'Orbitron', monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -216,24 +223,33 @@
   transition: all 0.25s ease;
   text-align: left;
   min-height: 48px;
-  display: flex;
-  align-items: center;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
-.mobile-nav-link:active {
-  background: rgba(0, 245, 255, 0.08);
-  color: #00f5ff;
-  border-left: 3px solid #00f5ff;
-  padding-left: 17px;
-}
-
-.mobile-nav-link.active {
+.mobile-nav-link:hover {
   background: rgba(0, 245, 255, 0.12);
   color: #00f5ff;
   border-left: 3px solid #00f5ff;
   padding-left: 17px;
-  text-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+}
+
+.mobile-nav-link:active {
+  background: rgba(0, 245, 255, 0.18);
+  color: #00f5ff;
+  border-left: 3px solid #00f5ff;
+  padding-left: 17px;
+  box-shadow: inset 0 0 16px rgba(0, 245, 255, 0.1);
+}
+
+.mobile-nav-link.active {
+  background: rgba(0, 245, 255, 0.15);
+  color: #00f5ff;
+  border-left: 3px solid #00f5ff;
+  padding-left: 17px;
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.8);
+  font-weight: 900;
 }
 
 /* ─── MOBILE ACTIONS (Cart + Order) ─── */
@@ -241,9 +257,10 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 12px 0;
-  border-top: 1px solid rgba(0, 245, 255, 0.1);
-  margin-top: 8px;
+  padding: 16px 0;
+  border-top: 2px solid rgba(0, 245, 255, 0.2);
+  margin-top: 12px;
+  background: rgba(0, 245, 255, 0.02);
 }
 
 .mobile-cart-btn,
@@ -254,12 +271,12 @@
   gap: 10px;
   width: 100%;
   padding: 14px 20px;
-  background: none;
+  background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
-  color: rgba(224, 244, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+  color: #e0f4ff;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -267,35 +284,62 @@
   letter-spacing: 0.05em;
   min-height: 48px;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-cart-btn:hover,
+.mobile-order-btn:hover {
+  background: rgba(0, 245, 255, 0.12);
+  color: #00f5ff;
 }
 
 .mobile-cart-btn:active,
 .mobile-order-btn:active {
-  background: rgba(0, 245, 255, 0.08);
+  background: rgba(0, 245, 255, 0.18);
   color: #00f5ff;
+  box-shadow: inset 0 0 16px rgba(0, 245, 255, 0.1);
 }
 
 .mobile-order-btn {
-  background: linear-gradient(135deg, rgba(0, 245, 255, 0.15) 0%, rgba(0, 245, 255, 0.05) 100%);
-  border: 1px solid rgba(0, 245, 255, 0.3);
-  border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.25) 0%, rgba(0, 245, 255, 0.12) 100%);
+  border: 2px solid #00f5ff;
+  border-bottom: 2px solid #00f5ff;
   color: #00f5ff;
   font-weight: 700;
-  margin: 8px 12px 0;
-  width: auto;
-  align-self: center;
-  padding: 12px 28px;
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
+  margin: 12px 16px;
+  width: calc(100% - 32px);
+  align-self: auto;
+  padding: 14px 24px;
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.3), inset 0 0 12px rgba(0, 245, 255, 0.08);
+  text-shadow: 0 0 8px rgba(0, 245, 255, 0.6);
+}
+
+.mobile-order-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.3) 0%, rgba(0, 245, 255, 0.18) 100%);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.5), inset 0 0 16px rgba(0, 245, 255, 0.12);
+  border-color: #00f5ff;
 }
 
 .mobile-order-btn:active {
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
-  background: linear-gradient(135deg, rgba(0, 245, 255, 0.25) 0%, rgba(0, 245, 255, 0.12) 100%);
+  box-shadow: 0 0 24px rgba(0, 245, 255, 0.6), inset 0 0 20px rgba(0, 245, 255, 0.2);
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.35) 0%, rgba(0, 245, 255, 0.2) 100%);
 }
 
 .mobile-cart-btn svg {
   color: #ff00aa;
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  stroke: #ff00aa;
+}
+
+.mobile-order-btn svg {
+  color: #00f5ff;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  stroke: #00f5ff;
 }
 
 /* ─── PULSE GLOW ANIMATION ─── */
@@ -562,19 +606,35 @@
 
   .mobile-menu {
     top: 56px;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    background: #020408;
+    z-index: 999;
+  }
+
+  .mobile-menu.open {
+    max-height: calc(100vh - 56px);
   }
 
   .mobile-nav-link,
   .mobile-cart-btn,
   .mobile-order-btn {
-    font-size: 0.75rem;
-    padding: 12px 16px;
-    min-height: 44px;
+    font-size: 0.7rem;
+    padding: 14px 16px;
+    min-height: 48px;
+    color: #e0f4ff;
   }
 
   .mobile-order-btn {
-    margin: 8px auto 0;
-    padding: 10px 20px;
+    margin: 12px 12px;
+    padding: 12px 20px;
     font-size: 0.7rem;
+    width: calc(100% - 24px);
+  }
+
+  .mobile-cart-btn svg {
+    width: 16px;
+    height: 16px;
   }
 }
