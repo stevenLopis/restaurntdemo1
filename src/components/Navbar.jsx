@@ -97,27 +97,25 @@ function Navbar({ page, setPage, cartCount }) {
       </div>
 
       {/* Mobile Menu Dropdown */}
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+      <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
         <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(false)}></div>
-        <div className="mobile-menu-content-wrapper">
-          <div className="mobile-menu-content">
-            {NAV_PAGES.map((pageItem) => (
-              <button
-                key={pageItem}
-                className={`mobile-nav-link ${page === pageItem ? 'active' : ''}`}
-                onClick={() => handleNavClick(pageItem)}
-              >
-                {pageItem}
-              </button>
-            ))}
-            
-            <button className="mobile-nav-link" onClick={() => handleNavClick('Cart')}>
+        <div className="mobile-menu-content">
+          <button className="close-btn" onClick={() => setMenuOpen(false)}>×</button>
+          <div className="nav-links">
+            <button className="nav-link" onClick={() => handleNavClick('Home')}>HOME</button>
+            <button className="nav-link" onClick={() => handleNavClick('Menu')}>MENU</button>
+            <button className="nav-link" onClick={() => handleNavClick('About')}>ABOUT</button>
+            <button className="nav-link" onClick={() => handleNavClick('Help')}>HELP</button>
+            <button className="nav-link" onClick={() => handleNavClick('Contact')}>CONTACT</button>
+            <button className="nav-link cart-link" onClick={() => handleNavClick('Cart')}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
               Cart
             </button>
-            
-            <button className="mobile-nav-link" onClick={() => handleNavClick('Menu')}>
-              Order Now
-            </button>
+            <button className="nav-link order-now-btn" onClick={() => handleNavClick('Menu')}>ORDER NOW</button>
           </div>
         </div>
       </div>
