@@ -512,3 +512,69 @@
     display: none !important;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════
+   EXTRA SMALL SCREENS (320px - 480px) SAFEGUARDS
+   ════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .navbar {
+    width: 100vw;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+  }
+
+  .navbar-container {
+    padding: 0 8px !important;
+    height: 56px;
+    gap: 8px;
+  }
+
+  .logo-btn {
+    min-width: auto;
+    gap: 6px;
+  }
+
+  .logo-box {
+    width: 32px;
+    height: 32px;
+    border-width: 1.5px;
+  }
+
+  .logo-text {
+    font-size: 0.65rem;
+  }
+
+  .logo-text-group {
+    display: none;
+  }
+
+  .hamburger {
+    width: 44px;
+    height: 44px;
+    gap: 4px;
+  }
+
+  .hamburger-line {
+    width: 18px;
+    height: 1.5px;
+  }
+
+  .mobile-menu {
+    top: 56px;
+  }
+
+  .mobile-nav-link,
+  .mobile-cart-btn,
+  .mobile-order-btn {
+    font-size: 0.75rem;
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+
+  .mobile-order-btn {
+    margin: 8px auto 0;
+    padding: 10px 20px;
+    font-size: 0.7rem;
+  }
+}

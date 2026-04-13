@@ -279,3 +279,164 @@ input, textarea, select { font-family: inherit; }
   0%,100% { opacity:1; } 50% { opacity:0; }
 }
 .blink { animation: blink 1s infinite; }
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE ENHANCEMENTS
+   ════════════════════════════════════════════════════════════════ */
+
+/* Ensure root container is fully responsive */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Mobile button sizing */
+@media (max-width: 640px) {
+  .btn-neon-cyan,
+  .btn-neon-magenta,
+  .btn-solid-cyan {
+    font-size: 0.6rem !important;
+    padding: 10px 16px !important;
+    width: auto;
+    min-height: 40px;
+    min-width: auto;
+  }
+
+  .btn-neon-cyan:active,
+  .btn-neon-magenta:active,
+  .btn-solid-cyan:active {
+    transform: translateY(1px);
+  }
+}
+
+/* Mobile input styling */
+@media (max-width: 640px) {
+  .input-cyber {
+    font-size: 0.75rem;
+    padding: 10px 12px;
+    width: 100%;
+  }
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .cat-pill {
+    font-size: 0.55rem;
+    padding: 3px 8px;
+  }
+}
+
+/* Mobile card improvements */
+@media (max-width: 640px) {
+  .glow-card,
+  .glow-card-magenta {
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .price-tag {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile navbar text sizing */
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 0.65rem;
+  }
+
+  .logo-box {
+    width: 32px;
+    height: 32px;
+    border-width: 1.5px;
+  }
+
+  .nav-link {
+    font-size: 0.55rem;
+    padding: 6px 10px;
+  }
+}
+
+/* Prevent text overflow in small containers */
+@media (max-width: 640px) {
+  .glitch-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hud-line {
+    font-size: 0.5rem;
+  }
+
+  .cat-pill {
+    white-space: nowrap;
+  }
+}
+
+/* Tablet sizing (640px - 1024px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .btn-neon-cyan,
+  .btn-neon-magenta,
+  .btn-solid-cyan {
+    font-size: 0.65rem;
+    padding: 12px 20px;
+  }
+
+  .qty-btn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .btn-neon-cyan,
+  .btn-neon-magenta,
+  .btn-solid-cyan {
+    font-size: 0.7rem;
+    padding: 14px 32px;
+  }
+
+  .qty-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE SECTION CONTAINER FIXES
+   ════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  /* Main content padding fixes */
+  section {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure images fully responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Fix aspect ratio containers */
+  [style*="aspectRatio"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Ensure no text overflow */
+  p, h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
