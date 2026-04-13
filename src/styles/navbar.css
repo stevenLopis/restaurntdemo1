@@ -257,9 +257,10 @@
 }
 
 .mobile-menu-content {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
   width: 100%;
   box-sizing: border-box;
   background: #020408;
@@ -267,32 +268,31 @@
 
 /* ─── MOBILE NAVIGATION LINKS ─── */
 .mobile-nav-link {
-  display: block;
-  width: 100%;
-  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
   background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 2px;
   color: #e0f4ff;
   font-family: 'Orbitron', monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.25s ease;
-  text-align: left;
-  min-height: 48px;
-  display: flex;
-  align-items: center;
+  text-align: center;
+  min-height: 52px;
   box-sizing: border-box;
 }
 
 .mobile-nav-link:hover {
   background: rgba(0, 245, 255, 0.12);
   color: #00f5ff;
-  border-left: 3px solid #00f5ff;
-  padding-left: 17px;
+  border-color: rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
 }
 
 .mobile-nav-link:active {
@@ -301,21 +301,22 @@
 }
 
 .mobile-nav-link.active {
-  background: rgba(0, 245, 255, 0.15);
+  background: rgba(0, 245, 255, 0.2);
   color: #00f5ff;
-  border-left: 3px solid #00f5ff;
-  padding-left: 17px;
+  border-color: rgba(0, 245, 255, 0.7);
   text-shadow: 0 0 12px rgba(0, 245, 255, 0.8);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.3);
 }
 
 /* ─── MOBILE ACTIONS (Cart + Order) ─── */
 .mobile-actions {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  padding: 12px 0;
+  gap: 8px;
+  padding: 8px 0 0 0;
   border-top: 1px solid rgba(0, 245, 255, 0.2);
   margin-top: 8px;
+  grid-column: 1 / -1;
 }
 
 .mobile-cart-btn,
@@ -323,21 +324,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
-  padding: 14px 20px;
+  padding: 12px 16px;
   background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 2px;
   color: #e0f4ff;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  min-height: 48px;
+  min-height: 44px;
   box-sizing: border-box;
 }
 
@@ -356,13 +357,11 @@
 .mobile-order-btn {
   background: linear-gradient(135deg, rgba(0, 245, 255, 0.2) 0%, rgba(0, 245, 255, 0.1) 100%);
   border: 1px solid rgba(0, 245, 255, 0.3);
-  border-bottom: 1px solid rgba(0, 245, 255, 0.3);
   color: #00f5ff;
   font-weight: 700;
-  margin: 8px 12px 0;
-  width: auto;
-  align-self: center;
-  padding: 12px 28px;
+  margin: 0;
+  width: 100%;
+  padding: 12px 16px;
   box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
 }
 
@@ -651,19 +650,22 @@
     width: 280px;
   }
 
+  .mobile-menu-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 8px;
+  }
+
   .mobile-nav-link,
   .mobile-cart-btn,
   .mobile-order-btn {
-    font-size: 0.7rem;
-    padding: 14px 16px;
-    min-height: 44px;
+    font-size: 0.65rem;
+    padding: 10px 6px;
+    min-height: 42px;
   }
 
   .mobile-order-btn {
-    margin: 12px 12px;
-    padding: 12px 20px;
-    font-size: 0.7rem;
-    width: calc(100% - 24px);
+    grid-column: 1 / -1;
   }
 
   .mobile-cart-btn svg {
