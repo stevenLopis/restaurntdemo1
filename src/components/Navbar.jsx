@@ -98,14 +98,14 @@ function Navbar({ page, setPage, cartCount }) {
 
       {/* ── Mobile Menu Dropdown ── */}
       <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
-        <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(true)} />
+        <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(false)} />
         <div className="mobile-menu-content">
           <button className="close-btn" onClick={() => setMenuOpen(false)}>×</button>
           <div className="nav-links">
             <button className="nav-link" onClick={() => handleNavClick('Home')}>HOME</button>
             <button className="nav-link" onClick={() => handleNavClick('Menu')}>MENU</button>
-            <button className="nav-link" onClick={() => handleNavClick('About')}>ABOUT</button>
             <button className="nav-link" onClick={() => handleNavClick('Help')}>HELP</button>
+            <button className="nav-link" onClick={() => handleNavClick('About')}>ABOUT</button>
             <button className="nav-link" onClick={() => handleNavClick('Contact')}>CONTACT</button>
             <button className="nav-link cart-link" onClick={() => handleNavClick('Cart')}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
