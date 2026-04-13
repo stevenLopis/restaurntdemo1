@@ -172,20 +172,49 @@
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   width: 100%;
+  height: 100vh;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.mobile-menu.open {
+  pointer-events: auto;
+}
+
+.mobile-menu-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.mobile-menu.open .mobile-menu-backdrop {
+  opacity: 1;
+}
+
+.mobile-menu-content-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
   height: 100vh;
   background: #020408;
   border-left: 2px solid rgba(0, 245, 255, 0.3);
-  z-index: 999;
   transform: translateX(100%);
   transition: transform 0.3s ease-out;
   overflow-y: auto;
   overflow-x: hidden;
   box-shadow: -8px 0 40px rgba(0, 245, 255, 0.2);
+  z-index: 1002;
 }
 
-.mobile-menu.open {
+.mobile-menu.open .mobile-menu-content-wrapper {
   transform: translateX(0);
 }
 
@@ -195,6 +224,9 @@
   padding: 16px 20px;
   border-bottom: 1px solid rgba(0, 245, 255, 0.15);
   background: rgba(0, 245, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1003;
 }
 
 .close-btn {
@@ -225,7 +257,7 @@
 }
 
 .mobile-menu-content {
-  padding: 0 20px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -472,10 +504,10 @@
   }
 
   /* Hide Mobile Elements */
-  .hamburger-wrapper,
+  /* .hamburger-wrapper,
   .mobile-menu {
     display: none !important;
-  }
+  } */
 
   /* Desktop Order Button */
   .btn-neon-cyan {
